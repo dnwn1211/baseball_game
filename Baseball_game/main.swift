@@ -18,3 +18,36 @@
 //게임 종료 조건:
 //  사용자가 컴퓨터가 임의로 설정한 숫자 3개를 모두 맞추면 종료
 
+//Lv 1
+// 1~9 임의의 수 3개를 입력하고 맞추기 정답은 랜덤으로 설정
+
+// 1~9의 서로 다른 임의의 수 3개 생성
+func threeNumber() -> [Int] {
+    var numbers: [Int] = []
+    
+    while numbers.count < 3 {
+        let randomNumber = Int.random(in: 1...9)
+        
+        if !numbers.contains(randomNumber) {
+            numbers.append(randomNumber)
+        }
+    }
+    
+    return numbers
+}
+
+print("서로 다른 임의의 수 3개를 입력하세요 (예: 1 2 3)")
+
+if let input = readLine() {
+    let userNumber = input.split(separator: " ").compactMap { Int($0) }
+    
+    // 입력된 숫자가 3개이고 서로 다른 숫자인지 확인
+    if userNumber.count == 3 && Set(userNumber).count == 3 {
+        let randomNumber = threeNumber()
+        print("랜덤 숫자 3개: \(randomNumber)")
+    } else {
+        print("잘못된 입력입니다. 서로 다른 3개의 숫자를 입력하세요.")
+    }
+} else {
+    print("입력이 없습니다.")
+}
