@@ -35,6 +35,7 @@ func random_threeNumber() -> [Int] {
     // 두 번째, 세 번쨰 자리 0~9
     while numbers.count < 3 {
         let randomNumber = Int.random(in: 0...9)
+        // .contains으로 중복검사
         if !numbers.contains(randomNumber) {
             numbers.append(randomNumber)
         }
@@ -43,14 +44,16 @@ func random_threeNumber() -> [Int] {
     return numbers
 }
 
-// 스트라이크, 볼, 아웃 판정 함수
+// 스트라이크, 볼 판정 함수
 func strike_ball(computer: [Int], user: [Int]) -> (strikes: Int, balls: Int) {
     var strikes = 0
     var balls = 0
     
     for i in 0..<3 {
+        // 컴퓨터의 랜덤 숫자와 사용자의 입력 숫자가 같은 위치 같은 숫자라면 strike
         if computer[i] == user[i] {
             strikes += 1
+        // 컴퓨터의 랜덤 숫자와 사용자의 입력 숫자가 다른 위치 같은 숫자라면 ball
         } else if computer.contains(user[i]) {
             balls += 1
         }
