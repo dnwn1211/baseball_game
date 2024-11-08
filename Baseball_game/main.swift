@@ -93,7 +93,7 @@ func startGame() {
                 let result = strike_ball(computer: threeNumber, user: userInput)
                 
                 if result.strikes == 3 {
-                    print("\(count)번 만에 정답입니다! 게임 종료!")
+                    print("축하합니다!! 정답은 \(userInput). \(count)번 만에 정답입니다! 게임 종료!")
                     gameRecords.append(count)
                     break
                 } else {
